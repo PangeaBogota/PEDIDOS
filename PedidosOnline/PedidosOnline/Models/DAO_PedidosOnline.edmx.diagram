@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4b67705d61c14d7dafe910624efc3e7a" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_9CAC35_pedidosv2Model.Actividad" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9CAC35_pedidosv2Model.Contacto" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9CAC35_pedidosv2Model.Ciudad" Width="1.5" PointX="5.25" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9CAC35_pedidosv2Model.Compañia" Width="1.5" PointX="7.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9CAC35_pedidosv2Model.ContactoERP" Width="1.5" PointX="7.5" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9CAC35_pedidosv2Model.Departamento" Width="1.5" PointX="3" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9CAC35_pedidosv2Model.Empresa" Width="1.5" PointX="5.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9CAC35_pedidosv2Model.Item" Width="1.5" PointX="9.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9CAC35_pedidosv2Model.ListaPrecio" Width="1.5" PointX="7.5" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9CAC35_pedidosv2Model.Pais" Width="1.5" PointX="0.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9CAC35_pedidosv2Model.Precio" Width="1.5" PointX="12" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9CAC35_pedidosv2Model.Sucursal" Width="1.5" PointX="9.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9CAC35_pedidosv2Model.Tercero" Width="1.5" PointX="7.5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9CAC35_pedidosv2Model.AgenteNaviera" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9CAC35_pedidosv2Model.Agrupacion" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9CAC35_pedidosv2Model.Opcion" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9CAC35_pedidosv2Model.Menu" Width="1.5" PointX="14.75" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9CAC35_pedidosv2Model.Modulo" Width="1.5" PointX="12.5" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9CAC35_pedidosv2Model.Rol" Width="1.5" PointX="14.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9CAC35_pedidosv2Model.RolMenu" Width="1.5" PointX="17" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9CAC35_pedidosv2Model.Usuario" Width="1.5" PointX="20" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9CAC35_pedidosv2Model.PuntoEnvio" Width="1.5" PointX="12" PointY="8.25" IsExpanded="true" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Actividad__Estad__0FEC5ADD" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Actividad__Prior__10E07F16" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Actividad__TipoI__11D4A34F" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK_Actividad_Contacto" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.fk_TipoRelacionID" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Ciudad__Departam__10216507" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__ContactoE__Ciuda__12FDD1B2" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Compañia__Empres__19AACF41" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Item__CompañiaID__29E1370A" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Sucursal__Compañ__336AA144" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Sucursal__Contac__3552E9B6" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Tercero__Contact__214BF109" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Departame__PaisI__0D44F85C" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Empresa__ErpID__15DA3E5D" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Empresa__IdiomaI__16CE6296" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Precio__ItemID__2CBDA3B5" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Precio__ListaPre__2DB1C7EE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Sucursal__ListaP__36470DEF" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__PuntoEnvi__Sucur__3B0BC30C" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Sucursal__Condic__345EC57D" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Sucursal__Tercer__373B3228" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Sucursal__TipoSu__382F5661" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Sucursal__Vended__39237A9A" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__PuntoEnvi__Vende__3BFFE745" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Usuario__Tercero__251C81ED" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Opcion__Agrupaci__0A688BB1" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Menu__ModuloID__6BAEFA67" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__RolMenu__MenuID__7AF13DF7" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__RolMenu__MenuID__7BE56230" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__RolMenu__RolID__7CD98669" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__RolMenu__RolID__7DCDAAA2" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9CAC35_pedidosv2Model.FK__Usuario__RolID__24285DB4" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,297 @@
+﻿@model List<PedidosOnline.Models.Usuario>
+@{
+    ViewBag.Title = "Usuarios";
+}
+
+<script src="~/Content/js/datatables/jquery.dataTables.min1.10.10.js"></script>
+
+<style>
+    .dataTables_wrapper .dataTables_paginate {
+        float: right;
+        text-align: right;
+        padding-top: 0.25em;
+    }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            box-sizing: border-box;
+            display: inline-block;
+            min-width: 1.5em;
+            padding: 0.5em 1em;
+            margin-left: 2px;
+            text-align: center;
+            text-decoration: none !important;
+            cursor: pointer;
+            *cursor: hand;
+            color: #333 !important;
+            border: 1px solid transparent;
+            border-radius: 2px;
+        }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+                color: #333 !important;
+                border: 1px solid #979797;
+                background-color: white;
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #dcdcdc));
+                background: -webkit-linear-gradient(top, #fff 0%, #dcdcdc 100%);
+                background: -moz-linear-gradient(top, #fff 0%, #dcdcdc 100%);
+                background: -ms-linear-gradient(top, #fff 0%, #dcdcdc 100%);
+                background: -o-linear-gradient(top, #fff 0%, #dcdcdc 100%);
+                background: linear-gradient(to bottom, #fff 0%, #dcdcdc 100%);
+            }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+                cursor: default;
+                color: #666 !important;
+                border: 1px solid transparent;
+                background: transparent;
+                box-shadow: none;
+            }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+                color: white !important;
+                border: 1px solid #111;
+                background-color: #585858;
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #585858), color-stop(100%, #111));
+                background: -webkit-linear-gradient(top, #585858 0%, #111 100%);
+                background: -moz-linear-gradient(top, #585858 0%, #111 100%);
+                background: -ms-linear-gradient(top, #585858 0%, #111 100%);
+                background: -o-linear-gradient(top, #585858 0%, #111 100%);
+                background: linear-gradient(to bottom, #585858 0%, #111 100%);
+            }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button:active {
+                outline: none;
+                background-color: #2b2b2b;
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2b2b2b), color-stop(100%, #0c0c0c));
+                background: -webkit-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);
+                background: -moz-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);
+                background: -ms-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);
+                background: -o-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);
+                background: linear-gradient(to bottom, #2b2b2b 0%, #0c0c0c 100%);
+                box-shadow: inset 0 0 3px #111;
+            }
+
+        .dataTables_wrapper .dataTables_paginate .ellipsis {
+            padding: 0 1em;
+        }
+</style>
+
+<style>
+    #Table_wrapper {
+        margin-right: 20px;
+    }
+
+    tfoot {
+        display: table-header-group;
+    }
+</style>
+
+<script>
+    function ModalEntitys(rowid) {
+        ModalProcesandoShow();
+        var urlWithCont = '../Account/Usuarios_EntidadesV2?rowid_usuario=' + rowid + "&rih=@Request.Params["rih"]";
+        $("#Dialog")
+        .load(urlWithCont.trim())
+        .dialog('open');
+    }
+
+    function ModalCambiarClave(rowid) {
+        ModalProcesandoShow();
+        var urlWithCont = '/Masters/Modal_CambiarContrasena?rowid=' + rowid + "&rih=@Request.Params["rih"]";
+        $("#Dialog")
+        .load(urlWithCont.trim())
+        .dialog('open');
+    }
+</script>
+
+<div id="Dialog"></div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row" id="div_menu" style="margin-bottom:20px">
+            <div class="col-md-12">
+                <div class="nav">
+                    <span>
+                        <a href="@Url.Action( "Usuario","Perfil",new {   @rih = Request.Params["rih"] })" class="alink">
+                            <i class="glyphicon glyphicon-plus"></i>&nbsp;<span class="lang" key="NUEVO">Nuevo</span>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="col-md-12">
+                <form method="post" id="form">
+                    <table id="Table" class="table table-condensed table-striped table-bordered table-hover table-checkable table-responsive">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th class="lang" key="USUARIO">Usuario</th>
+                                <th class="lang" key="NOMBRE">Nombre</th>
+                                <th class="lang" key="EMAIL">Email</th>
+                                <th class="lang" key="CLIENTE">Cliente</th>
+                                <th class="lang" key="IDENTIFICACION">Identificaci&oacute;n</th>
+                                <th style="text-align:center" class="lang" key="FECHA_CREACION">Fecha Craci&oacute;n</th>
+                                <th style="text-align:center" class="lang" key="ACTIVO">Activo</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th></th>
+                                <th class="lang" key="USUARIO">Usuario</th>
+                                <th class="lang" key="NOMBRE">Nombre</th>
+                                <th class="lang" key="EMAIL">Email</th>
+                                <th class="lang" key="CLIENTE">Cliente</th>
+                                <th class="lang" key="IDENTIFICACION">Identificaci&oacute;n</th>
+                                <th class="lang"></th>
+                                <th class="lang"></th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+
+                            @foreach (PedidosOnline.Models.Usuario reg in @Model.ToList())
+                            {
+                                <tr>
+                                    <td style="margin:0;padding:0">
+                                        <table style="border:0;padding:0;margin:0">
+                                            <tr>
+                                                <td>
+                                                    <a class="alink" href="@Url.Action("Usuario", "Masters", new { @rowid = @reg.RowID,  @rih = Request.Params["rih"] })" ata-toggle="tooltip" data-placement="bottom" title="Editar Usuario">
+                                                        <i class="glyphicon glyphicon-pencil"> </i>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a class="alink" href="../Masters/Rol_Usuario?id=@reg.RowID&rih=@Request.Params["rih"]" ata-toggle="tooltip" data-placement="bottom" title="Permisos Usuario">
+                                                        <i class="glyphicon glyphicon-list-alt"> </i>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a class="alink" href="javascript:ModalCambiarClave(@reg.RowID);" ata-toggle="tooltip" data-placement="bottom" title="Cambiar Clave">
+                                                        <i class="glyphicon glyphicon-lock"> </i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        @reg.NombreUsuario
+                                    </td>
+                                    <td>
+                                        @reg.Tercero.RazonSocial
+                                    </td>
+                                    <td>
+                                        @reg.Tercero.ContactoERP.Email
+                                    </td>
+                                    <td>
+                                        @reg.Tercero.Identificacion
+                                    </td>
+                                    <td style="text-align:center">
+                                        @reg.FechaCreacion<br /><b>@reg.UsuarioCreacion</b>
+                                    </td>
+                                    <td style="text-align:center">
+                                        @if (reg.Activo == true)
+                                        {
+                                            <input type="checkbox" checked="checked" disabled="disabled" />
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" disabled="disabled" />
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var cont = 0;
+        $('#Table tfoot th').each(function () {
+
+            var title = $(this).text();
+            var width = 'width: 100%;';
+            var id = '';
+
+            if (title == 'Usuario') {
+                id = 'id="fil_Usuario"';
+                //width = 'width:150px';
+            }
+            if (title == 'Nombre') {
+                id = 'id="fil_Nombre"';
+                width = 'width:100%';
+            }
+            if (title == 'Email') {
+                id = 'id="fil_Email"';
+                width = 'width:100%';
+            }
+
+            if (title == 'Cliente') {
+                id = 'id="fil_Cliente"';
+                width = 'width:100%';
+            }
+            if (title == 'Identificación') {
+                id = 'id="fil_Identificacion"';
+                width = 'width:100%';
+            }
+
+            if (title != '' && id != '') {
+                $(this).html('<input type="text" style="' + width + '" ' + id + ' placeholder="Buscar ' + title + '" />');
+            }
+            else
+                title = '';
+
+            cont += 1;
+        });
+
+        var aoColumnDefsType = [
+            { "bSortable": false, "aTargets": [0] }
+        ];
+
+        var table = $('#Table').DataTable({
+            "processing": true,
+            "bFilter": true,
+            "bPaginate": true,
+            "info": true,
+            "bDestroy": true,
+            aLengthMenu: [
+                [8],
+                [8]
+            ],
+            "iDisplayLength": 8,
+            "order": [[2, "asc"]],
+            "aoColumnDefs": aoColumnDefsType
+        });
+
+
+        // Apply the search
+        table.columns().every(function () {
+            var that = this;
+
+            $('input', this.footer()).on('keyup change', function () {
+                if (that.search() !== this.value) {
+                    that
+                        .search(this.value)
+                        .draw();
+                }
+            });
+        });
+
+        $("select[name='TablePedidos_length']").hide();
+        $(".dataTables_filter input").hide();
+        $(".dataTables_length").hide();
+
+        $("#Table_filter").hide();
+    });
+</script>
+
+
+
+
+
+
+

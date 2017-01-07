@@ -1,0 +1,2312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DB_9CAC35_pedidosv2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Actividad">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoID" Type="int" />
+          <Property Name="Tema" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrioridadID" Type="int" />
+          <Property Name="EstadoID" Type="int" />
+          <Property Name="Descripcion" Type="text" />
+          <Property Name="FechaInicial" Type="datetime" Nullable="false" />
+          <Property Name="FechaFinal" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="FK_Terceros" Type="int" />
+          <Property Name="FK_Contactos" Type="int" />
+          <Property Name="TipoRelacionID" Type="int" />
+          <Property Name="RowIDRelacion" Type="int" />
+        </EntityType>
+        <EntityType Name="Contacto">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Identificacion" Type="varchar" MaxLength="50" />
+          <Property Name="Nombres" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="150" />
+          <Property Name="Telefono" Type="varchar" MaxLength="150" />
+          <Property Name="Skype" Type="varchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="text" />
+          <Property Name="ruta_imagen" Type="text" />
+          <Property Name="Celular" Type="varchar" MaxLength="150" />
+          <Property Name="Cargo" Type="varchar" MaxLength="150" />
+          <Property Name="Area" Type="varchar" MaxLength="150" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="SucursalID" Type="int" />
+        </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RowIDERP" Type="int" />
+          <Property Name="Codigo" Type="varchar" MaxLength="10" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="DepartamentoID" Type="int" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="FechaCreacion" Type="date" Nullable="false" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="30" />
+          <Property Name="FechaModificacion" Type="date" />
+        </EntityType>
+        <EntityType Name="Compañia">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="int" Nullable="false" />
+          <Property Name="RowIDERP" Type="int" />
+          <Property Name="EmpresaID" Type="int" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="FechaCreacion" Type="date" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaModificacion" Type="date" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ContactoERP">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RowIDERP" Type="int" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="Apellido" Type="varchar" MaxLength="100" />
+          <Property Name="Direccion1" Type="varchar" MaxLength="100" />
+          <Property Name="Direccion2" Type="varchar" MaxLength="100" />
+          <Property Name="Direccion3" Type="varchar" MaxLength="100" />
+          <Property Name="Telefono1" Type="varchar" MaxLength="50" />
+          <Property Name="Telefono2" Type="varchar" MaxLength="50" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" />
+          <Property Name="CodigoPostal" Type="varchar" MaxLength="20" />
+          <Property Name="CiudadID" Type="int" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="FechaCreacion" Type="date" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaModificacion" Type="date" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+          <Property Name="Identificacion" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RowIDERP" Type="int" />
+          <Property Name="Codigo" Type="varchar" MaxLength="10" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="PaisID" Type="int" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="30" />
+          <Property Name="FechaCreacion" Type="date" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="30" />
+          <Property Name="FechaModificacion" Type="date" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RowIDERP" Type="int" />
+          <Property Name="Nit" Type="varchar" MaxLength="20" />
+          <Property Name="RazonSocial" Type="varchar" MaxLength="100" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="ErpID" Type="int" />
+          <Property Name="IdiomaID" Type="int" />
+          <Property Name="FechaCreacion" Type="date" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaModificacion" Type="date" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RowIDERP" Type="varchar" MaxLength="50" />
+          <Property Name="CompañiaID" Type="int" />
+          <Property Name="Referencia" Type="varchar" MaxLength="50" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="DescripcionExtensa" Type="varchar" MaxLength="200" />
+          <Property Name="Unidad" Type="varchar" MaxLength="10" />
+          <Property Name="UnidadVenta" Type="varchar" MaxLength="10" />
+          <Property Name="Venta" Type="bit" />
+          <Property Name="Compra" Type="bit" />
+          <Property Name="Embalaje" Type="varchar" MaxLength="20" />
+          <Property Name="CodigoBarras" Type="varchar" MaxLength="60" />
+          <Property Name="Impuesto" Type="float" />
+          <Property Name="FechaCreacion" Type="date" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaModificacion" Type="date" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ListaPrecio">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RowIDERP" Type="int" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RowIDERP" Type="int" />
+          <Property Name="Codigo" Type="varchar" MaxLength="10" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="30" />
+          <Property Name="FechaCreacion" Type="date" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="30" />
+          <Property Name="FechaModificacion" Type="date" />
+        </EntityType>
+        <EntityType Name="Precio">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RowIDERP" Type="int" />
+          <Property Name="ListaPrecioID" Type="int" />
+          <Property Name="ItemID" Type="int" />
+          <Property Name="ItemExtensionID" Type="int" />
+          <Property Name="Unidad" Type="varchar" MaxLength="10" />
+          <Property Name="Precio" Type="float" Nullable="false" />
+          <Property Name="FechaActivacion" Type="date" />
+          <Property Name="FechaInactivacion" Type="date" />
+          <Property Name="FechaCreacion" Type="date" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaModificacion" Type="date" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9CAC35_pedidosv2.Erp.PuntoEnvio' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="PuntoEnvio">
+          <Key>
+            <PropertyRef Name="RowID" />
+            <PropertyRef Name="FechaCreacion" />
+            <PropertyRef Name="UsuarioCreacion" />
+          </Key>
+          <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RowIDERP" Type="int" />
+          <Property Name="SucursalID" Type="int" />
+          <Property Name="VendedorID" Type="int" />
+          <Property Name="Codigo" Type="varchar" MaxLength="200" />
+          <Property Name="Nombre" Type="varchar" MaxLength="200" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="FechaCreacion" Type="date" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaModificacion" Type="date" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Sucursal">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RowIDERP" Type="int" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="CompañiaID" Type="int" />
+          <Property Name="TerceroID" Type="int" />
+          <Property Name="VendedorID" Type="int" />
+          <Property Name="ContactoERPID" Type="int" />
+          <Property Name="ListaPrecioID" Type="int" />
+          <Property Name="TipoSucursalID" Type="int" />
+          <Property Name="CondicionPago" Type="int" />
+          <Property Name="CentroOperacion" Type="varchar" MaxLength="50" />
+          <Property Name="BloqueoCupo" Type="bit" />
+          <Property Name="BloqueoMora" Type="bit" />
+          <Property Name="CupoCredito" Type="float" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tercero">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RowIDERP" Type="int" />
+          <Property Name="Identificacion" Type="varchar" MaxLength="25" />
+          <Property Name="TipoIdentificacion" Type="int" />
+          <Property Name="RazonSocial" Type="varchar" MaxLength="500" />
+          <Property Name="NombreComercial" Type="varchar" MaxLength="500" />
+          <Property Name="Vendedor" Type="smallint" />
+          <Property Name="Cliente" Type="smallint" />
+          <Property Name="Proveedor" Type="smallint" />
+          <Property Name="Accionista" Type="smallint" />
+          <Property Name="CodigoVendedorERP" Type="varchar" MaxLength="25" />
+          <Property Name="ContactoERPID" Type="int" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="FechaCreacion" Type="date" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaModificacion" Type="date" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AgenteNaviera">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="80" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaCreacion" Type="date" Nullable="false" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+          <Property Name="FechaModificacion" Type="date" />
+        </EntityType>
+        <EntityType Name="Agrupacion">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaCreacion" Type="date" Nullable="false" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+          <Property Name="FechaModificacion" Type="date" />
+        </EntityType>
+        <EntityType Name="Opcion">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AgrupacionID" Type="int" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+          <Property Name="FechaModificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModuloID" Type="int" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Controlador" Type="varchar" MaxLength="100" />
+          <Property Name="Metodo" Type="varchar" MaxLength="100" />
+          <Property Name="Icono" Type="varchar" MaxLength="50" />
+          <Property Name="BgColor" Type="varchar" MaxLength="50" />
+          <Property Name="Orden" Type="int" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaCreacion" Type="date" Nullable="false" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+          <Property Name="FechaModificacion" Type="date" />
+        </EntityType>
+        <EntityType Name="Modulo">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Icono" Type="varchar" MaxLength="50" />
+          <Property Name="BgColor" Type="varchar" MaxLength="50" />
+          <Property Name="Orden" Type="int" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaCreacion" Type="date" Nullable="false" />
+          <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+          <Property Name="FechaModificacion" Type="date" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+          <Property Name="FechaCreacion" Type="date" />
+          <Property Name="UsuarioActualizacion" Type="varchar" MaxLength="50" />
+          <Property Name="FechaActualizacion" Type="date" />
+        </EntityType>
+        <EntityType Name="RolMenu">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RolID" Type="int" />
+          <Property Name="MenuID" Type="int" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+          <Property Name="FechaCreacion" Type="date" />
+          <Property Name="UsuarioActualizacion" Type="varchar" MaxLength="50" />
+          <Property Name="FechaActualizacion" Type="date" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreUsuario" Type="varchar" MaxLength="50" />
+          <Property Name="Contraseña" Type="varchar" MaxLength="50" />
+          <Property Name="TerceroID" Type="int" />
+          <Property Name="RolID" Type="int" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+          <Property Name="FechaCreacion" Type="date" />
+          <Property Name="UsuarioActualizacion" Type="varchar" MaxLength="50" />
+          <Property Name="FechaActualizacion" Type="date" />
+        </EntityType>
+        <Association Name="FK__Actividad__Estad__0FEC5ADD">
+          <End Role="Opcion" Type="Self.Opcion" Multiplicity="0..1" />
+          <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opcion">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="EstadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Actividad__Prior__10E07F16">
+          <End Role="Opcion" Type="Self.Opcion" Multiplicity="0..1" />
+          <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opcion">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="PrioridadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Actividad__TipoI__11D4A34F">
+          <End Role="Opcion" Type="Self.Opcion" Multiplicity="0..1" />
+          <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opcion">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="TipoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ciudad__Departam__10216507">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Ciudad">
+              <PropertyRef Name="DepartamentoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Compañia__Empres__19AACF41">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="Compañia" Type="Self.Compañia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Compañia">
+              <PropertyRef Name="EmpresaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContactoE__Ciuda__12FDD1B2">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="0..1" />
+          <End Role="ContactoERP" Type="Self.ContactoERP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="ContactoERP">
+              <PropertyRef Name="CiudadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Departame__PaisI__0D44F85C">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="0..1" />
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Departamento">
+              <PropertyRef Name="PaisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empresa__ErpID__15DA3E5D">
+          <End Role="Opcion" Type="Self.Opcion" Multiplicity="0..1" />
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opcion">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Empresa">
+              <PropertyRef Name="ErpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empresa__IdiomaI__16CE6296">
+          <End Role="Opcion" Type="Self.Opcion" Multiplicity="0..1" />
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opcion">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Empresa">
+              <PropertyRef Name="IdiomaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Item__CompañiaID__29E1370A">
+          <End Role="Compañia" Type="Self.Compañia" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compañia">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="CompañiaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Menu__ModuloID__6BAEFA67">
+          <End Role="Modulo" Type="Self.Modulo" Multiplicity="0..1" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulo">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="ModuloID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Opcion__Agrupaci__0A688BB1">
+          <End Role="Agrupacion" Type="Self.Agrupacion" Multiplicity="0..1" />
+          <End Role="Opcion" Type="Self.Opcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agrupacion">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Opcion">
+              <PropertyRef Name="AgrupacionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Precio__ItemID__2CBDA3B5">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Precio" Type="Self.Precio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Precio">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Precio__ListaPre__2DB1C7EE">
+          <End Role="ListaPrecio" Type="Self.ListaPrecio" Multiplicity="0..1" />
+          <End Role="Precio" Type="Self.Precio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListaPrecio">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Precio">
+              <PropertyRef Name="ListaPrecioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PuntoEnvi__Sucur__3B0BC30C">
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="0..1" />
+          <End Role="PuntoEnvio" Type="Self.PuntoEnvio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="PuntoEnvio">
+              <PropertyRef Name="SucursalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PuntoEnvi__Vende__3BFFE745">
+          <End Role="Tercero" Type="Self.Tercero" Multiplicity="0..1" />
+          <End Role="PuntoEnvio" Type="Self.PuntoEnvio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tercero">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="PuntoEnvio">
+              <PropertyRef Name="VendedorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RolMenu__MenuID__7AF13DF7">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="RolMenu" Type="Self.RolMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="RolMenu">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RolMenu__MenuID__7BE56230">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="RolMenu" Type="Self.RolMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="RolMenu">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RolMenu__RolID__7CD98669">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="RolMenu" Type="Self.RolMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="RolMenu">
+              <PropertyRef Name="RolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RolMenu__RolID__7DCDAAA2">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="RolMenu" Type="Self.RolMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="RolMenu">
+              <PropertyRef Name="RolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sucursal__Compañ__336AA144">
+          <End Role="Compañia" Type="Self.Compañia" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compañia">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="CompañiaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sucursal__Condic__345EC57D">
+          <End Role="Opcion" Type="Self.Opcion" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opcion">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="CondicionPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sucursal__Contac__3552E9B6">
+          <End Role="ContactoERP" Type="Self.ContactoERP" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactoERP">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="ContactoERPID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sucursal__ListaP__36470DEF">
+          <End Role="ListaPrecio" Type="Self.ListaPrecio" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListaPrecio">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="ListaPrecioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sucursal__Tercer__373B3228">
+          <End Role="Tercero" Type="Self.Tercero" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tercero">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="TerceroID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sucursal__TipoSu__382F5661">
+          <End Role="Opcion" Type="Self.Opcion" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opcion">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="TipoSucursalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sucursal__Vended__39237A9A">
+          <End Role="Tercero" Type="Self.Tercero" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tercero">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="VendedorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tercero__Contact__214BF109">
+          <End Role="ContactoERP" Type="Self.ContactoERP" Multiplicity="0..1" />
+          <End Role="Tercero" Type="Self.Tercero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactoERP">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Tercero">
+              <PropertyRef Name="ContactoERPID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__RolID__24285DB4">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="RolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__Tercero__251C81ED">
+          <End Role="Tercero" Type="Self.Tercero" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tercero">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="TerceroID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Actividad_Contacto">
+          <End Role="Contacto" Type="Self.Contacto" Multiplicity="0..1" />
+          <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacto">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="FK_Contactos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TipoRelacionID">
+          <End Role="Opcion" Type="Self.Opcion" Multiplicity="0..1" />
+          <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opcion">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="TipoRelacionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_9CAC35_pedidosv2ModelStoreContainer">
+          <EntitySet Name="Actividad" EntityType="Self.Actividad" Schema="Crm" store:Type="Tables" />
+          <EntitySet Name="Contacto" EntityType="Self.Contacto" Schema="Crm" store:Type="Tables" />
+          <EntitySet Name="Ciudad" EntityType="Self.Ciudad" Schema="Erp" store:Type="Tables" />
+          <EntitySet Name="Compañia" EntityType="Self.Compañia" Schema="Erp" store:Type="Tables" />
+          <EntitySet Name="ContactoERP" EntityType="Self.ContactoERP" Schema="Erp" store:Type="Tables" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="Erp" store:Type="Tables" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="Erp" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="Erp" store:Type="Tables" />
+          <EntitySet Name="ListaPrecio" EntityType="Self.ListaPrecio" Schema="Erp" store:Type="Tables" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" Schema="Erp" store:Type="Tables" />
+          <EntitySet Name="Precio" EntityType="Self.Precio" Schema="Erp" store:Type="Tables" />
+          <EntitySet Name="Sucursal" EntityType="Self.Sucursal" Schema="Erp" store:Type="Tables" />
+          <EntitySet Name="Tercero" EntityType="Self.Tercero" Schema="Erp" store:Type="Tables" />
+          <EntitySet Name="AgenteNaviera" EntityType="Self.AgenteNaviera" Schema="Maestro" store:Type="Tables" />
+          <EntitySet Name="Agrupacion" EntityType="Self.Agrupacion" Schema="Maestro" store:Type="Tables" />
+          <EntitySet Name="Opcion" EntityType="Self.Opcion" Schema="Maestro" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="Perfil" store:Type="Tables" />
+          <EntitySet Name="Modulo" EntityType="Self.Modulo" Schema="Perfil" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="Perfil" store:Type="Tables" />
+          <EntitySet Name="RolMenu" EntityType="Self.RolMenu" Schema="Perfil" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="Perfil" store:Type="Tables" />
+          <EntitySet Name="PuntoEnvio" EntityType="Self.PuntoEnvio" store:Type="Tables" store:Schema="Erp">
+            <DefiningQuery>SELECT 
+    [PuntoEnvio].[RowID] AS [RowID], 
+    [PuntoEnvio].[RowIDERP] AS [RowIDERP], 
+    [PuntoEnvio].[SucursalID] AS [SucursalID], 
+    [PuntoEnvio].[VendedorID] AS [VendedorID], 
+    [PuntoEnvio].[Codigo] AS [Codigo], 
+    [PuntoEnvio].[Nombre] AS [Nombre], 
+    [PuntoEnvio].[Activo] AS [Activo], 
+    [PuntoEnvio].[FechaCreacion] AS [FechaCreacion], 
+    [PuntoEnvio].[UsuarioCreacion] AS [UsuarioCreacion], 
+    [PuntoEnvio].[FechaModificacion] AS [FechaModificacion], 
+    [PuntoEnvio].[UsuarioModificacion] AS [UsuarioModificacion]
+    FROM [Erp].[PuntoEnvio] AS [PuntoEnvio]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Actividad__Estad__0FEC5ADD" Association="Self.FK__Actividad__Estad__0FEC5ADD">
+            <End Role="Opcion" EntitySet="Opcion" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Actividad__Prior__10E07F16" Association="Self.FK__Actividad__Prior__10E07F16">
+            <End Role="Opcion" EntitySet="Opcion" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Actividad__TipoI__11D4A34F" Association="Self.FK__Actividad__TipoI__11D4A34F">
+            <End Role="Opcion" EntitySet="Opcion" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ciudad__Departam__10216507" Association="Self.FK__Ciudad__Departam__10216507">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Ciudad" EntitySet="Ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Compañia__Empres__19AACF41" Association="Self.FK__Compañia__Empres__19AACF41">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Compañia" EntitySet="Compañia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContactoE__Ciuda__12FDD1B2" Association="Self.FK__ContactoE__Ciuda__12FDD1B2">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="ContactoERP" EntitySet="ContactoERP" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Departame__PaisI__0D44F85C" Association="Self.FK__Departame__PaisI__0D44F85C">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Departamento" EntitySet="Departamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empresa__ErpID__15DA3E5D" Association="Self.FK__Empresa__ErpID__15DA3E5D">
+            <End Role="Opcion" EntitySet="Opcion" />
+            <End Role="Empresa" EntitySet="Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empresa__IdiomaI__16CE6296" Association="Self.FK__Empresa__IdiomaI__16CE6296">
+            <End Role="Opcion" EntitySet="Opcion" />
+            <End Role="Empresa" EntitySet="Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Item__CompañiaID__29E1370A" Association="Self.FK__Item__CompañiaID__29E1370A">
+            <End Role="Compañia" EntitySet="Compañia" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Menu__ModuloID__6BAEFA67" Association="Self.FK__Menu__ModuloID__6BAEFA67">
+            <End Role="Modulo" EntitySet="Modulo" />
+            <End Role="Menu" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Opcion__Agrupaci__0A688BB1" Association="Self.FK__Opcion__Agrupaci__0A688BB1">
+            <End Role="Agrupacion" EntitySet="Agrupacion" />
+            <End Role="Opcion" EntitySet="Opcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Precio__ItemID__2CBDA3B5" Association="Self.FK__Precio__ItemID__2CBDA3B5">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Precio" EntitySet="Precio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Precio__ListaPre__2DB1C7EE" Association="Self.FK__Precio__ListaPre__2DB1C7EE">
+            <End Role="ListaPrecio" EntitySet="ListaPrecio" />
+            <End Role="Precio" EntitySet="Precio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PuntoEnvi__Sucur__3B0BC30C" Association="Self.FK__PuntoEnvi__Sucur__3B0BC30C">
+            <End Role="Sucursal" EntitySet="Sucursal" />
+            <End Role="PuntoEnvio" EntitySet="PuntoEnvio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PuntoEnvi__Vende__3BFFE745" Association="Self.FK__PuntoEnvi__Vende__3BFFE745">
+            <End Role="Tercero" EntitySet="Tercero" />
+            <End Role="PuntoEnvio" EntitySet="PuntoEnvio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RolMenu__MenuID__7AF13DF7" Association="Self.FK__RolMenu__MenuID__7AF13DF7">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="RolMenu" EntitySet="RolMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RolMenu__MenuID__7BE56230" Association="Self.FK__RolMenu__MenuID__7BE56230">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="RolMenu" EntitySet="RolMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RolMenu__RolID__7CD98669" Association="Self.FK__RolMenu__RolID__7CD98669">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="RolMenu" EntitySet="RolMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RolMenu__RolID__7DCDAAA2" Association="Self.FK__RolMenu__RolID__7DCDAAA2">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="RolMenu" EntitySet="RolMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sucursal__Compañ__336AA144" Association="Self.FK__Sucursal__Compañ__336AA144">
+            <End Role="Compañia" EntitySet="Compañia" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sucursal__Condic__345EC57D" Association="Self.FK__Sucursal__Condic__345EC57D">
+            <End Role="Opcion" EntitySet="Opcion" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sucursal__Contac__3552E9B6" Association="Self.FK__Sucursal__Contac__3552E9B6">
+            <End Role="ContactoERP" EntitySet="ContactoERP" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sucursal__ListaP__36470DEF" Association="Self.FK__Sucursal__ListaP__36470DEF">
+            <End Role="ListaPrecio" EntitySet="ListaPrecio" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sucursal__Tercer__373B3228" Association="Self.FK__Sucursal__Tercer__373B3228">
+            <End Role="Tercero" EntitySet="Tercero" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sucursal__TipoSu__382F5661" Association="Self.FK__Sucursal__TipoSu__382F5661">
+            <End Role="Opcion" EntitySet="Opcion" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sucursal__Vended__39237A9A" Association="Self.FK__Sucursal__Vended__39237A9A">
+            <End Role="Tercero" EntitySet="Tercero" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tercero__Contact__214BF109" Association="Self.FK__Tercero__Contact__214BF109">
+            <End Role="ContactoERP" EntitySet="ContactoERP" />
+            <End Role="Tercero" EntitySet="Tercero" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__RolID__24285DB4" Association="Self.FK__Usuario__RolID__24285DB4">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__Tercero__251C81ED" Association="Self.FK__Usuario__Tercero__251C81ED">
+            <End Role="Tercero" EntitySet="Tercero" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Actividad_Contacto" Association="Self.FK_Actividad_Contacto">
+            <End Role="Contacto" EntitySet="Contacto" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TipoRelacionID" Association="Self.fk_TipoRelacionID">
+            <End Role="Opcion" EntitySet="Opcion" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_9CAC35_pedidosv2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Actividad">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoID" Type="Int32" />
+          <Property Name="Tema" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrioridadID" Type="Int32" />
+          <Property Name="EstadoID" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaInicial" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaFinal" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="FK_Terceros" Type="Int32" />
+          <Property Name="FK_Contactos" Type="Int32" />
+          <Property Name="TipoRelacionID" Type="Int32" />
+          <Property Name="RowIDRelacion" Type="Int32" />
+          <NavigationProperty Name="Opcion" Relationship="Self.FK__Actividad__Estad__0FEC5ADD" FromRole="Actividad" ToRole="Opcion" />
+          <NavigationProperty Name="Opcion1" Relationship="Self.FK__Actividad__Prior__10E07F16" FromRole="Actividad" ToRole="Opcion" />
+          <NavigationProperty Name="Opcion2" Relationship="Self.FK__Actividad__TipoI__11D4A34F" FromRole="Actividad" ToRole="Opcion" />
+          <NavigationProperty Name="Contacto" Relationship="Self.FK_Actividad_Contacto" FromRole="Actividad" ToRole="Contacto" />
+          <NavigationProperty Name="Opcion3" Relationship="Self.fk_TipoRelacionID" FromRole="Actividad" ToRole="Opcion" />
+        </EntityType>
+        <EntityType Name="Contacto">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Identificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombres" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Skype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ruta_imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Celular" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Cargo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Area" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="SucursalID" Type="Int32" />
+          <NavigationProperty Name="Actividad" Relationship="Self.FK_Actividad_Contacto" FromRole="Contacto" ToRole="Actividad" />
+        </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RowIDERP" Type="Int32" />
+          <Property Name="Codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DepartamentoID" Type="Int32" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Departamento" Relationship="Self.FK__Ciudad__Departam__10216507" FromRole="Ciudad" ToRole="Departamento" />
+          <NavigationProperty Name="ContactoERP" Relationship="Self.FK__ContactoE__Ciuda__12FDD1B2" FromRole="Ciudad" ToRole="ContactoERP" />
+        </EntityType>
+        <EntityType Name="Compañia">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" />
+          <Property Name="RowIDERP" Type="Int32" />
+          <Property Name="EmpresaID" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK__Compañia__Empres__19AACF41" FromRole="Compañia" ToRole="Empresa" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__Item__CompañiaID__29E1370A" FromRole="Compañia" ToRole="Item" />
+          <NavigationProperty Name="Sucursal" Relationship="Self.FK__Sucursal__Compañ__336AA144" FromRole="Compañia" ToRole="Sucursal" />
+        </EntityType>
+        <EntityType Name="ContactoERP">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RowIDERP" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoPostal" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CiudadID" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Identificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Ciudad" Relationship="Self.FK__ContactoE__Ciuda__12FDD1B2" FromRole="ContactoERP" ToRole="Ciudad" />
+          <NavigationProperty Name="Sucursal" Relationship="Self.FK__Sucursal__Contac__3552E9B6" FromRole="ContactoERP" ToRole="Sucursal" />
+          <NavigationProperty Name="Tercero" Relationship="Self.FK__Tercero__Contact__214BF109" FromRole="ContactoERP" ToRole="Tercero" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RowIDERP" Type="Int32" />
+          <Property Name="Codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaisID" Type="Int32" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Ciudad" Relationship="Self.FK__Ciudad__Departam__10216507" FromRole="Departamento" ToRole="Ciudad" />
+          <NavigationProperty Name="Pais" Relationship="Self.FK__Departame__PaisI__0D44F85C" FromRole="Departamento" ToRole="Pais" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RowIDERP" Type="Int32" />
+          <Property Name="Nit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RazonSocial" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="ErpID" Type="Int32" />
+          <Property Name="IdiomaID" Type="Int32" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Compañia" Relationship="Self.FK__Compañia__Empres__19AACF41" FromRole="Empresa" ToRole="Compañia" />
+          <NavigationProperty Name="Opcion" Relationship="Self.FK__Empresa__ErpID__15DA3E5D" FromRole="Empresa" ToRole="Opcion" />
+          <NavigationProperty Name="Opcion1" Relationship="Self.FK__Empresa__IdiomaI__16CE6296" FromRole="Empresa" ToRole="Opcion" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RowIDERP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompañiaID" Type="Int32" />
+          <Property Name="Referencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DescripcionExtensa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Unidad" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UnidadVenta" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Venta" Type="Boolean" />
+          <Property Name="Compra" Type="Boolean" />
+          <Property Name="Embalaje" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoBarras" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Impuesto" Type="Double" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Compañia" Relationship="Self.FK__Item__CompañiaID__29E1370A" FromRole="Item" ToRole="Compañia" />
+          <NavigationProperty Name="Precio" Relationship="Self.FK__Precio__ItemID__2CBDA3B5" FromRole="Item" ToRole="Precio" />
+        </EntityType>
+        <EntityType Name="ListaPrecio">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RowIDERP" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Precio" Relationship="Self.FK__Precio__ListaPre__2DB1C7EE" FromRole="ListaPrecio" ToRole="Precio" />
+          <NavigationProperty Name="Sucursal" Relationship="Self.FK__Sucursal__ListaP__36470DEF" FromRole="ListaPrecio" ToRole="Sucursal" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RowIDERP" Type="Int32" />
+          <Property Name="Codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Departamento" Relationship="Self.FK__Departame__PaisI__0D44F85C" FromRole="Pais" ToRole="Departamento" />
+        </EntityType>
+        <EntityType Name="Precio">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RowIDERP" Type="Int32" />
+          <Property Name="ListaPrecioID" Type="Int32" />
+          <Property Name="ItemID" Type="Int32" />
+          <Property Name="ItemExtensionID" Type="Int32" />
+          <Property Name="Unidad" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Precio1" Type="Double" Nullable="false" />
+          <Property Name="FechaActivacion" Type="DateTime" Precision="0" />
+          <Property Name="FechaInactivacion" Type="DateTime" Precision="0" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__Precio__ItemID__2CBDA3B5" FromRole="Precio" ToRole="Item" />
+          <NavigationProperty Name="ListaPrecio" Relationship="Self.FK__Precio__ListaPre__2DB1C7EE" FromRole="Precio" ToRole="ListaPrecio" />
+        </EntityType>
+        <EntityType Name="Sucursal">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RowIDERP" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CompañiaID" Type="Int32" />
+          <Property Name="TerceroID" Type="Int32" />
+          <Property Name="VendedorID" Type="Int32" />
+          <Property Name="ContactoERPID" Type="Int32" />
+          <Property Name="ListaPrecioID" Type="Int32" />
+          <Property Name="TipoSucursalID" Type="Int32" />
+          <Property Name="CondicionPago" Type="Int32" />
+          <Property Name="CentroOperacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BloqueoCupo" Type="Boolean" />
+          <Property Name="BloqueoMora" Type="Boolean" />
+          <Property Name="CupoCredito" Type="Double" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Compañia" Relationship="Self.FK__Sucursal__Compañ__336AA144" FromRole="Sucursal" ToRole="Compañia" />
+          <NavigationProperty Name="ContactoERP" Relationship="Self.FK__Sucursal__Contac__3552E9B6" FromRole="Sucursal" ToRole="ContactoERP" />
+          <NavigationProperty Name="ListaPrecio" Relationship="Self.FK__Sucursal__ListaP__36470DEF" FromRole="Sucursal" ToRole="ListaPrecio" />
+          <NavigationProperty Name="PuntoEnvio" Relationship="Self.FK__PuntoEnvi__Sucur__3B0BC30C" FromRole="Sucursal" ToRole="PuntoEnvio" />
+          <NavigationProperty Name="Opcion" Relationship="Self.FK__Sucursal__Condic__345EC57D" FromRole="Sucursal" ToRole="Opcion" />
+          <NavigationProperty Name="Tercero" Relationship="Self.FK__Sucursal__Tercer__373B3228" FromRole="Sucursal" ToRole="Tercero" />
+          <NavigationProperty Name="Opcion1" Relationship="Self.FK__Sucursal__TipoSu__382F5661" FromRole="Sucursal" ToRole="Opcion" />
+          <NavigationProperty Name="Tercero1" Relationship="Self.FK__Sucursal__Vended__39237A9A" FromRole="Sucursal" ToRole="Tercero" />
+        </EntityType>
+        <EntityType Name="Tercero">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RowIDERP" Type="Int32" />
+          <Property Name="Identificacion" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="TipoIdentificacion" Type="Int32" />
+          <Property Name="RazonSocial" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NombreComercial" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Vendedor" Type="Int16" />
+          <Property Name="Cliente" Type="Int16" />
+          <Property Name="Proveedor" Type="Int16" />
+          <Property Name="Accionista" Type="Int16" />
+          <Property Name="CodigoVendedorERP" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ContactoERPID" Type="Int32" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ContactoERP" Relationship="Self.FK__Tercero__Contact__214BF109" FromRole="Tercero" ToRole="ContactoERP" />
+          <NavigationProperty Name="Sucursal" Relationship="Self.FK__Sucursal__Tercer__373B3228" FromRole="Tercero" ToRole="Sucursal" />
+          <NavigationProperty Name="Sucursal1" Relationship="Self.FK__Sucursal__Vended__39237A9A" FromRole="Tercero" ToRole="Sucursal" />
+          <NavigationProperty Name="PuntoEnvio" Relationship="Self.FK__PuntoEnvi__Vende__3BFFE745" FromRole="Tercero" ToRole="PuntoEnvio" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__Tercero__251C81ED" FromRole="Tercero" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="AgenteNaviera">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Agrupacion">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Opcion" Relationship="Self.FK__Opcion__Agrupaci__0A688BB1" FromRole="Agrupacion" ToRole="Opcion" />
+        </EntityType>
+        <EntityType Name="Opcion">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgrupacionID" Type="Int32" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Actividad" Relationship="Self.FK__Actividad__Estad__0FEC5ADD" FromRole="Opcion" ToRole="Actividad" />
+          <NavigationProperty Name="Actividad1" Relationship="Self.FK__Actividad__Prior__10E07F16" FromRole="Opcion" ToRole="Actividad" />
+          <NavigationProperty Name="Actividad2" Relationship="Self.FK__Actividad__TipoI__11D4A34F" FromRole="Opcion" ToRole="Actividad" />
+          <NavigationProperty Name="Actividad3" Relationship="Self.fk_TipoRelacionID" FromRole="Opcion" ToRole="Actividad" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK__Empresa__ErpID__15DA3E5D" FromRole="Opcion" ToRole="Empresa" />
+          <NavigationProperty Name="Empresa1" Relationship="Self.FK__Empresa__IdiomaI__16CE6296" FromRole="Opcion" ToRole="Empresa" />
+          <NavigationProperty Name="Sucursal" Relationship="Self.FK__Sucursal__Condic__345EC57D" FromRole="Opcion" ToRole="Sucursal" />
+          <NavigationProperty Name="Sucursal1" Relationship="Self.FK__Sucursal__TipoSu__382F5661" FromRole="Opcion" ToRole="Sucursal" />
+          <NavigationProperty Name="Agrupacion" Relationship="Self.FK__Opcion__Agrupaci__0A688BB1" FromRole="Opcion" ToRole="Agrupacion" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModuloID" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Controlador" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Metodo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Icono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BgColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Orden" Type="Int32" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Modulo" Relationship="Self.FK__Menu__ModuloID__6BAEFA67" FromRole="Menu" ToRole="Modulo" />
+          <NavigationProperty Name="RolMenu" Relationship="Self.FK__RolMenu__MenuID__7AF13DF7" FromRole="Menu" ToRole="RolMenu" />
+          <NavigationProperty Name="RolMenu1" Relationship="Self.FK__RolMenu__MenuID__7BE56230" FromRole="Menu" ToRole="RolMenu" />
+        </EntityType>
+        <EntityType Name="Modulo">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Icono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BgColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Orden" Type="Int32" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK__Menu__ModuloID__6BAEFA67" FromRole="Modulo" ToRole="Menu" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="UsuarioActualizacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaActualizacion" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="RolMenu" Relationship="Self.FK__RolMenu__RolID__7CD98669" FromRole="Rol" ToRole="RolMenu" />
+          <NavigationProperty Name="RolMenu1" Relationship="Self.FK__RolMenu__RolID__7DCDAAA2" FromRole="Rol" ToRole="RolMenu" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__RolID__24285DB4" FromRole="Rol" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="RolMenu">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RolID" Type="Int32" />
+          <Property Name="MenuID" Type="Int32" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="UsuarioActualizacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaActualizacion" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK__RolMenu__MenuID__7AF13DF7" FromRole="RolMenu" ToRole="Menu" />
+          <NavigationProperty Name="Menu1" Relationship="Self.FK__RolMenu__MenuID__7BE56230" FromRole="RolMenu" ToRole="Menu" />
+          <NavigationProperty Name="Rol" Relationship="Self.FK__RolMenu__RolID__7CD98669" FromRole="RolMenu" ToRole="Rol" />
+          <NavigationProperty Name="Rol1" Relationship="Self.FK__RolMenu__RolID__7DCDAAA2" FromRole="RolMenu" ToRole="Rol" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TerceroID" Type="Int32" />
+          <Property Name="RolID" Type="Int32" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="UsuarioActualizacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaActualizacion" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Tercero" Relationship="Self.FK__Usuario__Tercero__251C81ED" FromRole="Usuario" ToRole="Tercero" />
+          <NavigationProperty Name="Rol" Relationship="Self.FK__Usuario__RolID__24285DB4" FromRole="Usuario" ToRole="Rol" />
+        </EntityType>
+        <EntityType Name="PuntoEnvio">
+          <Key>
+            <PropertyRef Name="RowID" />
+            <PropertyRef Name="FechaCreacion" />
+            <PropertyRef Name="UsuarioCreacion" />
+          </Key>
+          <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RowIDERP" Type="Int32" />
+          <Property Name="SucursalID" Type="Int32" />
+          <Property Name="VendedorID" Type="Int32" />
+          <Property Name="Codigo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+          <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Sucursal" Relationship="Self.FK__PuntoEnvi__Sucur__3B0BC30C" FromRole="PuntoEnvio" ToRole="Sucursal" />
+          <NavigationProperty Name="Tercero" Relationship="Self.FK__PuntoEnvi__Vende__3BFFE745" FromRole="PuntoEnvio" ToRole="Tercero" />
+        </EntityType>
+        <Association Name="FK__Actividad__Estad__0FEC5ADD">
+          <End Role="Opcion" Type="Self.Opcion" Multiplicity="0..1" />
+          <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opcion">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="EstadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Actividad__Prior__10E07F16">
+          <End Role="Opcion" Type="Self.Opcion" Multiplicity="0..1" />
+          <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opcion">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="PrioridadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Actividad__TipoI__11D4A34F">
+          <End Role="Opcion" Type="Self.Opcion" Multiplicity="0..1" />
+          <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opcion">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="TipoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Actividad_Contacto">
+          <End Role="Contacto" Type="Self.Contacto" Multiplicity="0..1" />
+          <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacto">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="FK_Contactos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TipoRelacionID">
+          <End Role="Opcion" Type="Self.Opcion" Multiplicity="0..1" />
+          <End Role="Actividad" Type="Self.Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opcion">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="TipoRelacionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ciudad__Departam__10216507">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Ciudad">
+              <PropertyRef Name="DepartamentoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContactoE__Ciuda__12FDD1B2">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="0..1" />
+          <End Role="ContactoERP" Type="Self.ContactoERP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="ContactoERP">
+              <PropertyRef Name="CiudadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Compañia__Empres__19AACF41">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="Compañia" Type="Self.Compañia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Compañia">
+              <PropertyRef Name="EmpresaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Item__CompañiaID__29E1370A">
+          <End Role="Compañia" Type="Self.Compañia" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compañia">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="CompañiaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sucursal__Compañ__336AA144">
+          <End Role="Compañia" Type="Self.Compañia" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compañia">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="CompañiaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sucursal__Contac__3552E9B6">
+          <End Role="ContactoERP" Type="Self.ContactoERP" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactoERP">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="ContactoERPID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tercero__Contact__214BF109">
+          <End Role="ContactoERP" Type="Self.ContactoERP" Multiplicity="0..1" />
+          <End Role="Tercero" Type="Self.Tercero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactoERP">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Tercero">
+              <PropertyRef Name="ContactoERPID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Departame__PaisI__0D44F85C">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="0..1" />
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Departamento">
+              <PropertyRef Name="PaisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empresa__ErpID__15DA3E5D">
+          <End Role="Opcion" Type="Self.Opcion" Multiplicity="0..1" />
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opcion">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Empresa">
+              <PropertyRef Name="ErpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empresa__IdiomaI__16CE6296">
+          <End Role="Opcion" Type="Self.Opcion" Multiplicity="0..1" />
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opcion">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Empresa">
+              <PropertyRef Name="IdiomaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Precio__ItemID__2CBDA3B5">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Precio" Type="Self.Precio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Precio">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Precio__ListaPre__2DB1C7EE">
+          <End Role="ListaPrecio" Type="Self.ListaPrecio" Multiplicity="0..1" />
+          <End Role="Precio" Type="Self.Precio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListaPrecio">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Precio">
+              <PropertyRef Name="ListaPrecioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sucursal__ListaP__36470DEF">
+          <End Role="ListaPrecio" Type="Self.ListaPrecio" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListaPrecio">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="ListaPrecioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PuntoEnvi__Sucur__3B0BC30C">
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="0..1" />
+          <End Role="PuntoEnvio" Type="Self.PuntoEnvio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="PuntoEnvio">
+              <PropertyRef Name="SucursalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sucursal__Condic__345EC57D">
+          <End Role="Opcion" Type="Self.Opcion" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opcion">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="CondicionPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sucursal__Tercer__373B3228">
+          <End Role="Tercero" Type="Self.Tercero" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tercero">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="TerceroID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sucursal__TipoSu__382F5661">
+          <End Role="Opcion" Type="Self.Opcion" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opcion">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="TipoSucursalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sucursal__Vended__39237A9A">
+          <End Role="Tercero" Type="Self.Tercero" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tercero">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="VendedorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PuntoEnvi__Vende__3BFFE745">
+          <End Role="Tercero" Type="Self.Tercero" Multiplicity="0..1" />
+          <End Role="PuntoEnvio" Type="Self.PuntoEnvio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tercero">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="PuntoEnvio">
+              <PropertyRef Name="VendedorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__Tercero__251C81ED">
+          <End Role="Tercero" Type="Self.Tercero" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tercero">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="TerceroID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Opcion__Agrupaci__0A688BB1">
+          <End Role="Agrupacion" Type="Self.Agrupacion" Multiplicity="0..1" />
+          <End Role="Opcion" Type="Self.Opcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agrupacion">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Opcion">
+              <PropertyRef Name="AgrupacionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Menu__ModuloID__6BAEFA67">
+          <End Role="Modulo" Type="Self.Modulo" Multiplicity="0..1" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulo">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="ModuloID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RolMenu__MenuID__7AF13DF7">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="RolMenu" Type="Self.RolMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="RolMenu">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RolMenu__MenuID__7BE56230">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="RolMenu" Type="Self.RolMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="RolMenu">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RolMenu__RolID__7CD98669">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="RolMenu" Type="Self.RolMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="RolMenu">
+              <PropertyRef Name="RolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RolMenu__RolID__7DCDAAA2">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="RolMenu" Type="Self.RolMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="RolMenu">
+              <PropertyRef Name="RolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__RolID__24285DB4">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="RolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PedidosOnlineEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Actividad" EntityType="Self.Actividad" />
+          <EntitySet Name="Contacto" EntityType="Self.Contacto" />
+          <EntitySet Name="Ciudad" EntityType="Self.Ciudad" />
+          <EntitySet Name="Compañia" EntityType="Self.Compañia" />
+          <EntitySet Name="ContactoERP" EntityType="Self.ContactoERP" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" />
+          <EntitySet Name="Item" EntityType="Self.Item" />
+          <EntitySet Name="ListaPrecio" EntityType="Self.ListaPrecio" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" />
+          <EntitySet Name="Precio" EntityType="Self.Precio" />
+          <EntitySet Name="Sucursal" EntityType="Self.Sucursal" />
+          <EntitySet Name="Tercero" EntityType="Self.Tercero" />
+          <EntitySet Name="AgenteNaviera" EntityType="Self.AgenteNaviera" />
+          <EntitySet Name="Agrupacion" EntityType="Self.Agrupacion" />
+          <EntitySet Name="Opcion" EntityType="Self.Opcion" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" />
+          <EntitySet Name="Modulo" EntityType="Self.Modulo" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" />
+          <EntitySet Name="RolMenu" EntityType="Self.RolMenu" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <EntitySet Name="PuntoEnvio" EntityType="Self.PuntoEnvio" />
+          <AssociationSet Name="FK__Actividad__Estad__0FEC5ADD" Association="Self.FK__Actividad__Estad__0FEC5ADD">
+            <End Role="Opcion" EntitySet="Opcion" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Actividad__Prior__10E07F16" Association="Self.FK__Actividad__Prior__10E07F16">
+            <End Role="Opcion" EntitySet="Opcion" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Actividad__TipoI__11D4A34F" Association="Self.FK__Actividad__TipoI__11D4A34F">
+            <End Role="Opcion" EntitySet="Opcion" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Actividad_Contacto" Association="Self.FK_Actividad_Contacto">
+            <End Role="Contacto" EntitySet="Contacto" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TipoRelacionID" Association="Self.fk_TipoRelacionID">
+            <End Role="Opcion" EntitySet="Opcion" />
+            <End Role="Actividad" EntitySet="Actividad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ciudad__Departam__10216507" Association="Self.FK__Ciudad__Departam__10216507">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Ciudad" EntitySet="Ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContactoE__Ciuda__12FDD1B2" Association="Self.FK__ContactoE__Ciuda__12FDD1B2">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="ContactoERP" EntitySet="ContactoERP" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Compañia__Empres__19AACF41" Association="Self.FK__Compañia__Empres__19AACF41">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Compañia" EntitySet="Compañia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Item__CompañiaID__29E1370A" Association="Self.FK__Item__CompañiaID__29E1370A">
+            <End Role="Compañia" EntitySet="Compañia" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sucursal__Compañ__336AA144" Association="Self.FK__Sucursal__Compañ__336AA144">
+            <End Role="Compañia" EntitySet="Compañia" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sucursal__Contac__3552E9B6" Association="Self.FK__Sucursal__Contac__3552E9B6">
+            <End Role="ContactoERP" EntitySet="ContactoERP" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tercero__Contact__214BF109" Association="Self.FK__Tercero__Contact__214BF109">
+            <End Role="ContactoERP" EntitySet="ContactoERP" />
+            <End Role="Tercero" EntitySet="Tercero" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Departame__PaisI__0D44F85C" Association="Self.FK__Departame__PaisI__0D44F85C">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Departamento" EntitySet="Departamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empresa__ErpID__15DA3E5D" Association="Self.FK__Empresa__ErpID__15DA3E5D">
+            <End Role="Opcion" EntitySet="Opcion" />
+            <End Role="Empresa" EntitySet="Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empresa__IdiomaI__16CE6296" Association="Self.FK__Empresa__IdiomaI__16CE6296">
+            <End Role="Opcion" EntitySet="Opcion" />
+            <End Role="Empresa" EntitySet="Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Precio__ItemID__2CBDA3B5" Association="Self.FK__Precio__ItemID__2CBDA3B5">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Precio" EntitySet="Precio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Precio__ListaPre__2DB1C7EE" Association="Self.FK__Precio__ListaPre__2DB1C7EE">
+            <End Role="ListaPrecio" EntitySet="ListaPrecio" />
+            <End Role="Precio" EntitySet="Precio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sucursal__ListaP__36470DEF" Association="Self.FK__Sucursal__ListaP__36470DEF">
+            <End Role="ListaPrecio" EntitySet="ListaPrecio" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PuntoEnvi__Sucur__3B0BC30C" Association="Self.FK__PuntoEnvi__Sucur__3B0BC30C">
+            <End Role="Sucursal" EntitySet="Sucursal" />
+            <End Role="PuntoEnvio" EntitySet="PuntoEnvio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sucursal__Condic__345EC57D" Association="Self.FK__Sucursal__Condic__345EC57D">
+            <End Role="Opcion" EntitySet="Opcion" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sucursal__Tercer__373B3228" Association="Self.FK__Sucursal__Tercer__373B3228">
+            <End Role="Tercero" EntitySet="Tercero" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sucursal__TipoSu__382F5661" Association="Self.FK__Sucursal__TipoSu__382F5661">
+            <End Role="Opcion" EntitySet="Opcion" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sucursal__Vended__39237A9A" Association="Self.FK__Sucursal__Vended__39237A9A">
+            <End Role="Tercero" EntitySet="Tercero" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PuntoEnvi__Vende__3BFFE745" Association="Self.FK__PuntoEnvi__Vende__3BFFE745">
+            <End Role="Tercero" EntitySet="Tercero" />
+            <End Role="PuntoEnvio" EntitySet="PuntoEnvio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__Tercero__251C81ED" Association="Self.FK__Usuario__Tercero__251C81ED">
+            <End Role="Tercero" EntitySet="Tercero" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Opcion__Agrupaci__0A688BB1" Association="Self.FK__Opcion__Agrupaci__0A688BB1">
+            <End Role="Agrupacion" EntitySet="Agrupacion" />
+            <End Role="Opcion" EntitySet="Opcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Menu__ModuloID__6BAEFA67" Association="Self.FK__Menu__ModuloID__6BAEFA67">
+            <End Role="Modulo" EntitySet="Modulo" />
+            <End Role="Menu" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RolMenu__MenuID__7AF13DF7" Association="Self.FK__RolMenu__MenuID__7AF13DF7">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="RolMenu" EntitySet="RolMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RolMenu__MenuID__7BE56230" Association="Self.FK__RolMenu__MenuID__7BE56230">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="RolMenu" EntitySet="RolMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RolMenu__RolID__7CD98669" Association="Self.FK__RolMenu__RolID__7CD98669">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="RolMenu" EntitySet="RolMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RolMenu__RolID__7DCDAAA2" Association="Self.FK__RolMenu__RolID__7DCDAAA2">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="RolMenu" EntitySet="RolMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__RolID__24285DB4" Association="Self.FK__Usuario__RolID__24285DB4">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_9CAC35_pedidosv2ModelStoreContainer" CdmEntityContainer="PedidosOnlineEntities">
+          <EntitySetMapping Name="Actividad">
+            <EntityTypeMapping TypeName="DB_9CAC35_pedidosv2Model.Actividad">
+              <MappingFragment StoreEntitySet="Actividad">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="TipoID" ColumnName="TipoID" />
+                <ScalarProperty Name="Tema" ColumnName="Tema" />
+                <ScalarProperty Name="PrioridadID" ColumnName="PrioridadID" />
+                <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaInicial" ColumnName="FechaInicial" />
+                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="FK_Terceros" ColumnName="FK_Terceros" />
+                <ScalarProperty Name="FK_Contactos" ColumnName="FK_Contactos" />
+                <ScalarProperty Name="TipoRelacionID" ColumnName="TipoRelacionID" />
+                <ScalarProperty Name="RowIDRelacion" ColumnName="RowIDRelacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacto">
+            <EntityTypeMapping TypeName="DB_9CAC35_pedidosv2Model.Contacto">
+              <MappingFragment StoreEntitySet="Contacto">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Skype" ColumnName="Skype" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="ruta_imagen" ColumnName="ruta_imagen" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="SucursalID" ColumnName="SucursalID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ciudad">
+            <EntityTypeMapping TypeName="DB_9CAC35_pedidosv2Model.Ciudad">
+              <MappingFragment StoreEntitySet="Ciudad">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="RowIDERP" ColumnName="RowIDERP" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="DepartamentoID" ColumnName="DepartamentoID" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Compañia">
+            <EntityTypeMapping TypeName="DB_9CAC35_pedidosv2Model.Compañia">
+              <MappingFragment StoreEntitySet="Compañia">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="RowIDERP" ColumnName="RowIDERP" />
+                <ScalarProperty Name="EmpresaID" ColumnName="EmpresaID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactoERP">
+            <EntityTypeMapping TypeName="DB_9CAC35_pedidosv2Model.ContactoERP">
+              <MappingFragment StoreEntitySet="ContactoERP">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="RowIDERP" ColumnName="RowIDERP" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Direccion1" ColumnName="Direccion1" />
+                <ScalarProperty Name="Direccion2" ColumnName="Direccion2" />
+                <ScalarProperty Name="Direccion3" ColumnName="Direccion3" />
+                <ScalarProperty Name="Telefono1" ColumnName="Telefono1" />
+                <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+                <ScalarProperty Name="CiudadID" ColumnName="CiudadID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamento">
+            <EntityTypeMapping TypeName="DB_9CAC35_pedidosv2Model.Departamento">
+              <MappingFragment StoreEntitySet="Departamento">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="RowIDERP" ColumnName="RowIDERP" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="PaisID" ColumnName="PaisID" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresa">
+            <EntityTypeMapping TypeName="DB_9CAC35_pedidosv2Model.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="RowIDERP" ColumnName="RowIDERP" />
+                <ScalarProperty Name="Nit" ColumnName="Nit" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="ErpID" ColumnName="ErpID" />
+                <ScalarProperty Name="IdiomaID" ColumnName="IdiomaID" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item">
+            <EntityTypeMapping TypeName="DB_9CAC35_pedidosv2Model.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="RowIDERP" ColumnName="RowIDERP" />
+                <ScalarProperty Name="CompañiaID" ColumnName="CompañiaID" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="DescripcionExtensa" ColumnName="DescripcionExtensa" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="UnidadVenta" ColumnName="UnidadVenta" />
+                <ScalarProperty Name="Venta" ColumnName="Venta" />
+                <ScalarProperty Name="Compra" ColumnName="Compra" />
+                <ScalarProperty Name="Embalaje" ColumnName="Embalaje" />
+                <ScalarProperty Name="CodigoBarras" ColumnName="CodigoBarras" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListaPrecio">
+            <EntityTypeMapping TypeName="DB_9CAC35_pedidosv2Model.ListaPrecio">
+              <MappingFragment StoreEntitySet="ListaPrecio">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="RowIDERP" ColumnName="RowIDERP" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pais">
+            <EntityTypeMapping TypeName="DB_9CAC35_pedidosv2Model.Pais">
+              <MappingFragment StoreEntitySet="Pais">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="RowIDERP" ColumnName="RowIDERP" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Precio">
+            <EntityTypeMapping TypeName="DB_9CAC35_pedidosv2Model.Precio">
+              <MappingFragment StoreEntitySet="Precio">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="RowIDERP" ColumnName="RowIDERP" />
+                <ScalarProperty Name="ListaPrecioID" ColumnName="ListaPrecioID" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="ItemExtensionID" ColumnName="ItemExtensionID" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="Precio1" ColumnName="Precio" />
+                <ScalarProperty Name="FechaActivacion" ColumnName="FechaActivacion" />
+                <ScalarProperty Name="FechaInactivacion" ColumnName="FechaInactivacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sucursal">
+            <EntityTypeMapping TypeName="DB_9CAC35_pedidosv2Model.Sucursal">
+              <MappingFragment StoreEntitySet="Sucursal">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="RowIDERP" ColumnName="RowIDERP" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CompañiaID" ColumnName="CompañiaID" />
+                <ScalarProperty Name="TerceroID" ColumnName="TerceroID" />
+                <ScalarProperty Name="VendedorID" ColumnName="VendedorID" />
+                <ScalarProperty Name="ContactoERPID" ColumnName="ContactoERPID" />
+                <ScalarProperty Name="ListaPrecioID" ColumnName="ListaPrecioID" />
+                <ScalarProperty Name="TipoSucursalID" ColumnName="TipoSucursalID" />
+                <ScalarProperty Name="CondicionPago" ColumnName="CondicionPago" />
+                <ScalarProperty Name="CentroOperacion" ColumnName="CentroOperacion" />
+                <ScalarProperty Name="BloqueoCupo" ColumnName="BloqueoCupo" />
+                <ScalarProperty Name="BloqueoMora" ColumnName="BloqueoMora" />
+                <ScalarProperty Name="CupoCredito" ColumnName="CupoCredito" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tercero">
+            <EntityTypeMapping TypeName="DB_9CAC35_pedidosv2Model.Tercero">
+              <MappingFragment StoreEntitySet="Tercero">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="RowIDERP" ColumnName="RowIDERP" />
+                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+                <ScalarProperty Name="TipoIdentificacion" ColumnName="TipoIdentificacion" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="NombreComercial" ColumnName="NombreComercial" />
+                <ScalarProperty Name="Vendedor" ColumnName="Vendedor" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="Accionista" ColumnName="Accionista" />
+                <ScalarProperty Name="CodigoVendedorERP" ColumnName="CodigoVendedorERP" />
+                <ScalarProperty Name="ContactoERPID" ColumnName="ContactoERPID" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AgenteNaviera">
+            <EntityTypeMapping TypeName="DB_9CAC35_pedidosv2Model.AgenteNaviera">
+              <MappingFragment StoreEntitySet="AgenteNaviera">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agrupacion">
+            <EntityTypeMapping TypeName="DB_9CAC35_pedidosv2Model.Agrupacion">
+              <MappingFragment StoreEntitySet="Agrupacion">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Opcion">
+            <EntityTypeMapping TypeName="DB_9CAC35_pedidosv2Model.Opcion">
+              <MappingFragment StoreEntitySet="Opcion">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="AgrupacionID" ColumnName="AgrupacionID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menu">
+            <EntityTypeMapping TypeName="DB_9CAC35_pedidosv2Model.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="ModuloID" ColumnName="ModuloID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Controlador" ColumnName="Controlador" />
+                <ScalarProperty Name="Metodo" ColumnName="Metodo" />
+                <ScalarProperty Name="Icono" ColumnName="Icono" />
+                <ScalarProperty Name="BgColor" ColumnName="BgColor" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modulo">
+            <EntityTypeMapping TypeName="DB_9CAC35_pedidosv2Model.Modulo">
+              <MappingFragment StoreEntitySet="Modulo">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Icono" ColumnName="Icono" />
+                <ScalarProperty Name="BgColor" ColumnName="BgColor" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol">
+            <EntityTypeMapping TypeName="DB_9CAC35_pedidosv2Model.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioActualizacion" ColumnName="UsuarioActualizacion" />
+                <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RolMenu">
+            <EntityTypeMapping TypeName="DB_9CAC35_pedidosv2Model.RolMenu">
+              <MappingFragment StoreEntitySet="RolMenu">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="RolID" ColumnName="RolID" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioActualizacion" ColumnName="UsuarioActualizacion" />
+                <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="DB_9CAC35_pedidosv2Model.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+                <ScalarProperty Name="TerceroID" ColumnName="TerceroID" />
+                <ScalarProperty Name="RolID" ColumnName="RolID" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioActualizacion" ColumnName="UsuarioActualizacion" />
+                <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PuntoEnvio">
+            <EntityTypeMapping TypeName="DB_9CAC35_pedidosv2Model.PuntoEnvio">
+              <MappingFragment StoreEntitySet="PuntoEnvio">
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="RowIDERP" ColumnName="RowIDERP" />
+                <ScalarProperty Name="SucursalID" ColumnName="SucursalID" />
+                <ScalarProperty Name="VendedorID" ColumnName="VendedorID" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

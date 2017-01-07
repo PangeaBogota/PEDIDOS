@@ -1,0 +1,109 @@
+﻿@model PedidosOnline.Models.Usuario
+@{
+    ViewBag.Title = "Usuario";
+}
+
+<script>
+
+    function EnviarDatos(accion) {
+        var validator = $("#form").validate();
+        if (!validator.form())
+            return ;
+
+     
+
+        ModalProcesandoShow();
+
+        hasChangue = false;
+        $.ajax({
+            type: "POST",
+            url: "/Perfil/Usuario_",
+            data: {
+                FormData: $("#form").serialize(),
+                rowid:$("#rowid").val()
+            },
+            success: function (rowid) {
+
+                Mensajes('Datos almacenados exitosamente', 'success', '');
+
+                if(accion==1){
+                    if(@Model.RowID<=0 )
+                        location.href="/Perfil/Usuario?rowid="+rowid+"&rih=@Request.Params["rih"]";
+                }
+                else{
+                    location.href="/Perfil/Usuarios?rih=@Request.Params["rih"]";
+                }
+
+            },
+            error: function (request) {
+                hasChangue = true;
+                ModalProcesandoHiden();
+                Mensajes("Se presento un problema al almacenar la informacion, intente nuevamente", 'error', '');
+            }
+        });
+
+    }
+
+
+
+    $.validator.messages.required = 'Campo requerido';
+    $.validator.messages.email = 'Email invalido';
+</script>
+
+
+<div style="margin-bottom: 20px;">
+    <div class="nav">
+        <span>
+            <a href="javascript:EnviarDatos(1);" class="alink">
+                <i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;<span class="lang" key="GUARDAR">Guardar</span>
+            </a>
+        </span>
+        <span>
+            &nbsp;&nbsp;
+            <a href="javascript:EnviarDatos(2);" class="alink">
+                <i class="glyphicon glyphicon-floppy-disk"></i><span class="lang" key="GUARDAR_&_CERRAR">&nbsp;Guardar&nbsp;&&nbsp;Cerrar</span>
+            </a>
+        </span>
+        <span>
+            &nbsp;&nbsp;
+            <a href="@Url.Action("Usuarios","Perfil", new { @rih = Request.Params["rih"] })" class="alink">
+                <i class="glyphicon glyphicon-list-alt"></i>&nbsp;<span class="lang" key="VISTA">Vista</span>
+            </a>
+        </span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-4" style="margin-left:-15px;">
+            <form id="form">
+                <h4 class="lang" key="DATOS_GENERALES">Datos Generales</h4>
+                <hr style="margin:0">
+                <br />
+
+                <input type="hidden" id="rowid" name="rowid" value="@Model.RowID" />
+
+                <div class="form-group">
+                    <label class="lang" for="nombre_usuario" key="USUARIO">Usuario</label>
+                    <input type="text" id="nombre_usuario" name="nombre_usuario" value="@Model.NombreUsuario" placeholder="---" required="required" />
+                </div>
+
+                <div class="form-group">
+                    <label class="lang" for="clave" key="PASSWORD">Password</label>
+                    <input type="password" id="clave" name="clave" value="@Model.Contraseña" placeholder="---" />
+                </div>
+
+                <div class="form-group">
+                    <label class="lang" for="ind_activo" key="ACTIVO">Activo</label>
+                    <input type="checkbox" id="ind_activo" name="ind_activo" value="1" />
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
